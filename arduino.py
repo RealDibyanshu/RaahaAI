@@ -3,3 +3,5 @@ import pyfirmata as pyF
 
 
 arduino = pyS
+arduino.Serial(9600)
+

@@ -14,37 +14,20 @@ timeNow = datetime.now()
 current_time = timeNow.strftime("%H:%M:%S")
 
 print("Time: ", current_time)
-textSpeech.say(current_time)
-textSpeech.runAndWait()
 
 # Basic calculation for system check
 va = 60
 vb = 69
 vc = va * vb
 
+enterPass = dataB.enterPass
+
 
 # def = function, pStart is the name of the function
-def pStart(pass_=dataB.pass_):
+def pStart():
     print("System okay")
-    textSpeech.say("System Okay!")
-    textSpeech.runAndWait()
 
-    textSpeech.say("Enter Password to Start: ")
-    textSpeech.runAndWait()
-    __pass__ = input("Enter Password to Start: ")
-
-    if __pass__ != pass_:
-        print("wrong password, Try again!")
-        textSpeech.say("wrong password, Try again!")
-        textSpeech.runAndWait()
-
-        textSpeech.say("Initiating Password Recovery Function")
-        textSpeech.runAndWait()
-
-        print("Initiating Password Recovery Function")
-        forgotPass()
-    else:
-        pPro()
+    enterPassword()
 
 
 def pPro(user=dataB.user_):
@@ -53,8 +36,6 @@ def pPro(user=dataB.user_):
     textSpeech.runAndWait()
 
     print("Starting Camera!")
-    textSpeech.say("Starting Camera!")
-    textSpeech.runAndWait()
 
     cam.motionDect()
 
@@ -64,20 +45,16 @@ def pClose():
     print("Errors in system")
 
 
-def forgotPass(pass_=dataB.fPass_):
-    __mQ__ = input("What's my imaginary dog name ?")
-    if __mQ__ != pass_:
-        textSpeech.say("Wrong answer!")
-        textSpeech.runAndWait()
-
-        print("Wrong Answer")
-        quit()
-    else:
-        textSpeech.say("Enter new password")
-        textSpeech.runAndWait()
-
-        __nP__ = input("Enter new password : ")
-        pPro()
+def enterPassword(pass_=dataB.pass_):
+    count = 0
+    tries = 5
+    while count < 5:
+        _pass_ = int(input("Enter Password: "))
+        if _pass_ == pass_:
+            print("Access Granted")
+            pPro()
+        else:
+            print("Access denied, Maximum tries reached")
 
 
 if vc == 4140:
